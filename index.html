@@ -1,0 +1,83 @@
+<html>
+    <body>
+        <div>
+            <h2>Number Palindrome Test</h2>
+            <div>
+                <span>Number</span>
+                <input type="number" id="a" value="0"/>
+                <button onclick="aa()">RUN</button>
+                <button onclick="bb()" style="display:none">STOP</button>
+                <input type="checkbox" id="b"/>Auto +1
+            </div>
+            <div>
+                <input type="checkbox" id="c" checked/>Limiter
+                <input type="number" id="d" value="100"/>
+            </div>
+            <div>log</div>
+        </div>
+        <textarea id="e" style="height:80vh; width:100%; border:0"></textarea>
+
+        <script>
+            function aa(){
+                var ax=document.querySelector('#a').value,
+                    d=document.querySelector('#b').checked,
+                    zzz=document.querySelector('#c').checked,
+                    zz=document.querySelector('#d').value,
+                    x=document.querySelector('#e'),
+                    a=ax, b=cc(a), c=0, w=' attempt', y=false, z=0;
+                if(!d){
+                    x.value='';
+                    console.clear();
+                }
+
+                while(y==false){
+                    z++;
+                    c=BigInt(a)+BigInt(b);
+                    x.value+=z+': '+a+' + '+b+' = '+c;
+                    if(dd(c)){
+                        if(z>1) w+='s';
+                        x.value+='\nPalindrome found in '+z+w+'\n\n';
+                        y=true;
+                    }else{
+                        a=c;
+                        b=cc(a.toString());
+                        x.value+='\n';
+                    }
+                    console.log('count attempts for '+ax);
+                    if(z==zz && zzz) y=true;
+                }
+                if(y){
+                    if(d==true){
+                        document.querySelector('input+button').style.display = 'none';
+                        document.querySelector('input+button+button').style.display = 'inline-block';
+                        document.querySelector('#a').value++;
+                        setTimeout(function(){ aa()}, 0);
+                    }
+                    x.scrollTop = x.scrollHeight;
+                }
+            }
+            function cc(a){
+                for(var i=a.length,x=''; 0!=i; i--){
+                    x=x+a.substring(i-1, i);
+                }
+                return x;
+            }
+            function dd(a){
+                var a = a.toString(),
+                    b = a.split(''),
+                    c = a.length;
+                    d = 0;
+                for(var i=0;i<c;i++){
+                    if(a.split('')[i]==a.split('')[(a.length-1)-i]) d++
+                }
+                if(c==d) return true;
+                return false;
+            }
+            function bb(){
+                document.querySelector('input+button').style.display = 'inline-block';
+                document.querySelector('input+button+button').style.display = 'none';
+                var a = setTimeout(";");for (var i = 0 ; i < a ; i++) {    clearTimeout(i); }
+            }
+        </script>
+    </body>
+</html>
